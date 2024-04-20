@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pkmn
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: pkmn
+  template:
+    metadata:
+      labels:
+        app: pkmn
+    spec:
+      containers:
+        - name: multi-pkmn
+          image: {{ .Values.image.repository }} # Use the latest pkmn image from Docker Hub
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP

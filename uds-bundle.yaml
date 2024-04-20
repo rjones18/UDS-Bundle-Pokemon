@@ -1,0 +1,16 @@
+kind: UDSBundle
+metadata:
+  name: pkmn-bundle
+  description: Bundle with Zarf init and pokemon pokedex.
+  architecture: arm64
+  version: 0.0.1
+
+packages:
+
+  - name: init
+    repository: oci://ghcr.io/defenseunicorns/packages/init
+    ref: v0.32.1
+
+  - name: pkmn
+    path: ./
+    ref: 0.0.1

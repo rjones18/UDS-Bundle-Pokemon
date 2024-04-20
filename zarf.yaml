@@ -1,0 +1,26 @@
+kind: ZarfPackageConfig
+metadata:
+  name: pkmn
+  version: 0.0.1
+
+components:
+  - name: pkmn-helm-chart
+    required: true
+    charts:
+      # Charts are organized in a list with unique chart names per component - note that a Zarf chart name does not need to match the chart name in a Chart.yaml
+      - name: pkmn
+        version: 0.1.0
+        namespace: default
+        # In this case `localPath` will load the podinfo chart that is located in the `helm` directory
+        localPath: helm
+    # images:
+    #   - ghcr.io/rjones18/myrepo/pkmncontainer
+    # actions:
+    #   onDeploy:
+    #     after:
+    #       - wait:
+    #           cluster:
+    #             kind: deployment
+    #             name: pkmn
+    #             namespace: pkmn
+    #             condition: available
